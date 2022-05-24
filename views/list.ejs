@@ -5,13 +5,16 @@
     <h1><%= ListTitle%></h1>
   </div>
   <div class="box">
-    <% for(var i=0; i< UserTaskInput.length;i++){ %>
-    <div class="item">
-      <input type="checkbox">
-      <p> <%= UserTaskInput[i] %> </p>
-    </div>
+    <% UserTaskInput.forEach(function(item){ %>
+      <form class="checkBox" action="/delete" method="post">
+        <div class="item">
+          <input type="checkbox" name = <%= ListTitle+"_"+ item._id %>  onchange="this.form.submit()">
+          <p> <%= item.name %> </p>
+        </div>
+      </form>
 
-    <% }; %>
+
+    <% }); %>
 
     <div class="item">
       <form action="/" method="post">
